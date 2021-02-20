@@ -29,3 +29,8 @@ codegen/
 
 # Octave session info
 octave-workspace
+
+# Exported files
+*.pdf
+*.eps
+*.png
