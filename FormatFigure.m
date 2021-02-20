@@ -1,6 +1,6 @@
 function FormatFigure( figSize, fontSize, makeAxBlack )
 %FORMATFIGURE Set figure size, font-size, and use latex rendering.
-%   FORMATFIGURE() formats figure using default settings (10*10 cm, 12pt).
+%   FORMATFIGURE() formats figure using default settings (13.5*8 cm, 12pt).
 %   FORMATFIGURE( FIGSIZE ) specifies the figure size (in cm).
 %   FORMATFIGURE( FIGSIZE, FONTSIZE ) also specifies the font size (in pt).
 %   FORMATFIGURE( FIGSIZE, FONTSIZE, MAKEAXBLACK ) forces axes to be black.
@@ -14,7 +14,7 @@ function FormatFigure( figSize, fontSize, makeAxBlack )
 %
 %   Written: Z.J. Chen, J.X.J. Bannwarth
     arguments
-        figSize     (1, 2) double  {mustBeNumeric,mustBeReal} = [10 10]
+        figSize     (1, 2) double  {mustBeNumeric,mustBeReal} = [13.5 8]
         fontSize    (1, 1) double  {mustBeNumeric,mustBeReal} = 12
         makeAxBlack (1, 1) logical                            = false
     end
