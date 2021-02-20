@@ -1,6 +1,6 @@
 function PrintFigure( filename, formats, res )
 %PRINTFIGURE Print figure to PDF, EPS, or PNG.
-%   PRINTFIGURE( ) exports figure to PDF titled 'figure.pdf'.
+%   PRINTFIGURE( ) exports figure to PDF titled after the figure name.
 %   PRINTFIGURE( FILENAME ) specifies the filename.
 %   PRINTFIGURE( FILENAME, FORMATS ) export figure to selected formats.
 %   PRINTFIGURE( FILENAME, FORMATS, RES ) also defines resolution of PNG.
@@ -15,12 +15,23 @@ function PrintFigure( filename, formats, res )
 %
 %   Written: Z.J. Chen, J.X.J. Bannwarth
     arguments
-        filename (1,:) char   {mustBeNonempty}                = 'figure'
+        filename (1,:) char                                   = ''
         formats  (1,:)        {mustBeNonempty}                = 'pdf'
         res      (1,1) double {mustBePositive, mustBeInteger} = 300
     end
     
     %% Input processing
+    % If filename is not defined, read figure title
+    if isempty( filename )
+        h = gcf;
+        if ~isempty( h.Name )
+            filename = h;
+        else
+            % Default to figureXX if no title is defined
+            filename = sprintf( 'figure%02d', h.Number );
+        end
+    end
+    
     recognisedFormats = { 'pdf', 'eps', 'png' };
     % Remove extension to prevent double extensions, e.g. .pdf.pdf
     [filePath, filenameBody, ext] = fileparts( filename );
