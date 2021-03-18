@@ -25,7 +25,7 @@ function PrintFigure( filename, formats, res )
     if isempty( filename )
         h = gcf;
         if ~isempty( h.Name )
-            filename = h;
+            filename = h.Name;
         else
             % Default to figureXX if no title is defined
             filename = sprintf( 'figure%02d', h.Number );
